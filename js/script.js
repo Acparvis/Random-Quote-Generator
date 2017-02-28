@@ -5,30 +5,75 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 var quotes = [ {
   quote:'I am great' ,
   citation:'Liam Piam' ,
-  year: '2017'
+  year: '2017',
+  tags: [ "Humor", "Narccissism"],
+  Displayed: false
 } ,
 {
   quote: 'No I\'m the best' ,
   source: 'The Divine Wisdom of Zeus' ,
   citation: 'Zeus' ,
-  year: '500 BC'
+  year: '500 BC',
+  tags: [ "Delusion", "Drunkenness"],
+  Displayed: false
 } ,
 {
   quote:'You\'re both special' ,
   citation: 'Mum' ,
-  year: '2017'
+  year: '2017',
+  tags: [ "Diplomacy", "Fairness"],
+  Displayed: false
 }
 
 
 ];
+
 // Gets random quote
 function getRandomQuote() {
+  var counter = 0
+  for (x = 0; x < quotes.length; x++ ) {
+    if (quotes[x].Displayed == true ){
+      counter += 1;
+    }
+
+
+    }
+
+    if (counter >= quotes.length){
+
+      for (x = 0; x < quotes.length; x++ ){
+        quotes[x].Displayed = false;
+
+      }
+
+    }
+
   var i = Math.floor( Math.random() * quotes.length);
+
+
+var found = false;
+console.log('hi');
+while (found == false){
+
+  if (quotes[i].displayed == false){
+    found = true;
+
+  } else {
+
+    i = Math.floor( Math.random() * quotes.length);
+  }
+}
   return quotes[i];
 
 };
 
 function printQuote() {
+  //Change background color randomly
+  var colors = [ '#4286f4', '#41f4b2', '#b541f4', '#d0f441', '#41f4d9' ];
+  var i = Math.floor( Math.random() * colors.length);
+  var randomColor = colors[i];
+  document.getElementById('body').style.backgroundColor = randomColor;
+
 
   // Builds object string
   var quoteObject = getRandomQuote();
@@ -49,4 +94,9 @@ function printQuote() {
   var yearString =  '<span class="year">' + quoteObject.year + '</span></p>';
 
   document.getElementById('quote-box').innerHTML = quoteString + sourceString + citationString + yearString ;
+
+  quoteObject.Displayed = true;
+  console.log(quotes);
 };
+
+console.log(quotes);
