@@ -4,6 +4,7 @@ document.getElementById('loadQuote').addEventListener("click", printQuote, false
 
 var quotes = [ {
   quote:'I am great' ,
+  source: 'What I Am' ,
   citation:'Liam Piam' ,
   year: '2017',
   tags: [ "Humor", "Narccissism"],
@@ -19,9 +20,26 @@ var quotes = [ {
 } ,
 {
   quote:'You\'re both special' ,
+  source: 'Dinnertime Arguments' ,
   citation: 'Mum' ,
   year: '2017',
   tags: [ "Diplomacy", "Fairness"],
+  displayed: false
+},
+{
+  quote:'I just ate a big red candle' ,
+  source: 'Anchorman' ,
+  citation: 'The guy from Anchorman' ,
+  year: '2005',
+  tags: [ "Derp", "what?"],
+  displayed: false
+},
+{
+  quote:'Herp Dee Derp' ,
+  source: 'South Park' ,
+  citation: 'Cartman' ,
+  year: '2000',
+  tags: [ "More Hotpockets", "South Park"],
   displayed: false
 }
 
@@ -31,6 +49,7 @@ var quotes = [ {
 // Gets random quote
 function getRandomQuote() {
   var counter = 0
+
   for (x = 0; x < quotes.length; x++ ) {
     if (quotes[x].displayed == true ){
       counter += 1;
@@ -53,6 +72,7 @@ function getRandomQuote() {
 
 var found = false;
 
+// This while loop reselects another quote if the current one has already been displayed
 while (found == false){
 
   if (quotes[i].displayed == false){
@@ -102,4 +122,4 @@ function printQuote() {
 
 console.log(quotes);
 
-window.setInterval(printQuote, 30000);
+window.setInterval(printQuote, 3000);
