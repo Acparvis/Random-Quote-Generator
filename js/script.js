@@ -7,7 +7,7 @@ var quotes = [ {
   citation:'Liam Piam' ,
   year: '2017',
   tags: [ "Humor", "Narccissism"],
-  Displayed: false
+  displayed: false
 } ,
 {
   quote: 'No I\'m the best' ,
@@ -15,14 +15,14 @@ var quotes = [ {
   citation: 'Zeus' ,
   year: '500 BC',
   tags: [ "Delusion", "Drunkenness"],
-  Displayed: false
+  displayed: false
 } ,
 {
   quote:'You\'re both special' ,
   citation: 'Mum' ,
   year: '2017',
   tags: [ "Diplomacy", "Fairness"],
-  Displayed: false
+  displayed: false
 }
 
 
@@ -32,7 +32,7 @@ var quotes = [ {
 function getRandomQuote() {
   var counter = 0
   for (x = 0; x < quotes.length; x++ ) {
-    if (quotes[x].Displayed == true ){
+    if (quotes[x].displayed == true ){
       counter += 1;
     }
 
@@ -42,7 +42,7 @@ function getRandomQuote() {
     if (counter >= quotes.length){
 
       for (x = 0; x < quotes.length; x++ ){
-        quotes[x].Displayed = false;
+        quotes[x].displayed = false;
 
       }
 
@@ -52,7 +52,7 @@ function getRandomQuote() {
 
 
 var found = false;
-console.log('hi');
+
 while (found == false){
 
   if (quotes[i].displayed == false){
@@ -63,6 +63,8 @@ while (found == false){
     i = Math.floor( Math.random() * quotes.length);
   }
 }
+  quotes[i].displayed=true;
+  console.log(quotes[i]);
   return quotes[i];
 
 };
@@ -95,8 +97,9 @@ function printQuote() {
 
   document.getElementById('quote-box').innerHTML = quoteString + sourceString + citationString + yearString ;
 
-  quoteObject.Displayed = true;
   console.log(quotes);
 };
 
 console.log(quotes);
+
+window.setInterval(printQuote, 30000);
